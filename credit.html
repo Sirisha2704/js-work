@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="acc.js"></script>
+</head>
+<style>
+    body{
+         background-color: #F5EFFF;
+         color: #A594F9;
+    }
+.form{
+    background-image: url('https://i.pinimg.com/736x/2c/a8/0c/2ca80cb318b3d4345c0c597cdaf4e34c.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 550px; 
+    align-items: center;
+    padding-top: 35%;
+    padding-left: 45%;
+}
+
+  </style>
+<body>
+    <div class="form">
+    <form action="">
+<input type="number"   id="creamt">
+<input type="submit"    id="cresub">
+    </form><br>
+     <a href="index.html"><button onclick=" home()">Home</button></a></a>
+     <a href="account.html"><button onclick=" hac()"> Check Balance</button></a>
+     <a href="debit.html"><button onclick="dit()">Debit </button></a>
+    </div>
+
+<script>
+
+ let accountbalance = 50000;
+ document.getElementById('cresub').addEventListener('click',  function(){
+    let creval= document.getElementById('creamt').value;
+    let parsecredit = parseInt(creval)
+    const creres = accountbalance + parsecredit
+    alert(creres)
+    localStorage.setItem('currentBls', creres)
+ })
+
+</script>
+
+</body>
+</html>
+

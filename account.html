@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="acco.js"></script>
+    <style>
+      .acc{
+       background-image: url('https://img.freepik.com/free-vector/rupee-symbol-frame-with-text-space_1017-36519.jpg?uid=R164203338&ga=GA1.1.1101887968.1732526443&semt=ais_hybrid');
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;
+       height: 560px;
+       color: white;
+       text-align: center;
+       padding-top: 25%;
+       border: 1px solid white;
+      }
+    </style>
+</head>
+<body>
+  <div class="acc">
+    <h1>Account Details:</h1>
+    <p>User name: k.sirisha</p>
+    <p>Account number: 0000000000000000</p>
+    <p>phone number:9160909901 </p>
+    <p>Account Balance:<span id="usrBls"></span></p>
+
+
+    <button onclick="home()">HOME</button>
+    <button onclick="cdit()">CREDIT</button>
+    <button onclick="dit()">DEDIT</button>
+  </div>
+    
+   <script>
+    function home(){
+        const pin = 9160
+        let x = +prompt("please enter 4 digit pin ")
+        const res = x=== pin;
+        if(res){
+          alert("crebit Granted");
+          window.location.href= "index.html";
+        }else{
+          alert("Denied");
+        }
+        }
+    function cdit(){
+        const pin = 9160
+        let x = +prompt("please enter 4 digit pin ")
+        const res = x=== pin;
+        if(res){
+          alert("crebit Granted");
+          window.location.href= "credit.html";
+        }else{
+          alert("Denied");
+        }
+        }
+
+        function dit(){
+            const pin = 9160
+            let x = +prompt("please enter 4 digit pin ")
+            const res = x=== pin;
+            if(res){
+              alert(" debit Granted");
+              window.location.href= "debit.html";
+            }else{
+              alert("Denied");
+            }
+            }
+
+            document.getElementById('usrBls').innerHTML = localStorage.getItem('currentBls')
+       
+    </script> 
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="acc.js"></script>
+</head>
+
+<style>
+    body{
+         background-image: url('https://i.pinimg.com/736x/e5/cd/fe/e5cdfec959dd13ec0744de7eca7d1f22.jpg');
+         color: #A594F9;
+         background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 650px; 
+    }
+    
+.form{
+    display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding-top: 25%;
+}
+.a{
+    padding-top: 2%;
+    padding-left: 41%
+    
+}
+  </style>
+<body>
+    <div class="form">
+    <form action="">
+        <input type="number" name="" id="dbtamt">
+        <input type="submit" name="" id="debsub">
+    </form>
+</div>
+<div class="a">
+    <a href="index.html"><button onclick=" home()">Home</button></a></a>
+    <a href="account.html"><button onclick=" hac()"> Check Balance</button></a>
+    <a href="credit.html"><button onclick="cdit()">credit </button></a>
+</div>
+    <script>
+        let accountbalance = localStorage.getItem('currentBls');
+        document.getElementById('debsub').addEventListener('click' , function(){
+            let xValue = parseInt(accountbalance);
+            let dbtval = document.getElementById('dbtamt').value;
+            const dbtRes = xValue - dbtval
+            alert(dbtRes)
+            localStorage.setItem('currentBls' , dbtRes)
+        })
+
+
+
+    </script>
+
+   
+</body>
+</html>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        height: 100%;
+        background-image: url('https://i.pinimg.com/236x/6a/c0/4e/6ac04e4e26365b8f6bfded452c475762.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .cart-header h1{
+        text-align: center;
+        color: rgb(131, 197, 245);
+    }
+    .cart-container{
+        color: white;
+    }
+    .total{
+        color:white ;
+    }
+</style>
+<body>
+    
+    <div class="cart-header ">
+        <h1> Shopping Cart</h1>
+    </div>
+
+    <div class="cart-container container">
+        <!-- Cart items will be inserted here -->
+    </div>
+
+    <div class="total container">
+        <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+        <button class="btn btn-info" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  
+    <script>
+        
+        // Retrieve cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to display cart items
+        function displayCart(event) {    
+            const cartContainer = document.querySelector('.cart-container');
+            cartContainer.innerHTML = '';  // Clear the cart container
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<p class="text-center text-white">Your cart is empty.</p>`;
+                document.getElementById('totalPrice').innerText = '0';
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    
+                <div>
+                        <img src="${item.image}" height="300px" alt="${item.image}">                    
+                        <p><strong>Brand:${item.name}</strong></p>
+                        <p><strong>Price: </strong>₹${item.price}</p>
+                        <p><strong>Quantity: </strong> ${item.quantity}</p>
+                    </div>
+                    <div>
+                        <button class="btn-remove" data-index="${index}">Remove</button>
+                    </div>
+                `;
+                cartContainer.appendChild(cartItem);
+
+                total += item.price * item.quantity;
+            });
+
+            // Update the total price
+            document.getElementById('totalPrice').innerText = total;
+        }
+
+        // Event listener for removing items from the cart
+        document.querySelector('.cart-container').addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-remove')) {
+                const index = e.target.getAttribute('data-index');
+                cart.splice(index, 1);  // Remove item from cart array
+                localStorage.setItem('cart', JSON.stringify(cart));  // Update localStorage
+                displayCart();  // Re-render the cart
+            }
+        });
+
+        // Proceed to Checkout functionality (simple alert for now)
+        document.getElementById('checkoutBtn').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert('Proceeding to checkout...');
+                // You can redirect to a checkout page or handle checkout logic here
+            }
+        });
+
+        // Display the cart items on page load
+        displayCart();
+    </script>
+</body>
+</html>
